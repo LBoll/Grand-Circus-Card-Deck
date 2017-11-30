@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Weather";
+}
+
+<h2>Current Hand</h2>
+<table>
+@for (int i = 0; i < @ViewBag.Draw.Count; i++)
+{
+    <td>
+        <h5>@ViewBag.Draw[i]["value"] of @ViewBag.Draw[i]["suit"]</h5>
+    </td>
+    <td>
+        <img src="@ViewBag.Draw[i]["images"]["png"]" style="width:150px;height:200px;" />
+    </td>
+}
+</table>
+<!--
+<h2>Weather</h2>
+<table class="table-striped" style="padding:3px">
+    <thead class="thread-dark">
+        <tr>
+            <th>Time</th>
+            <th>Temp</th>
+            <th>Icon</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    for (int i = 0; i < ViewBag.Times.Count; i++)
+    {
+        <tr>
+            <td>ViewBag.Times[i]</td>
+            <td>ViewBag.Temps[i]</td>
+            <td><img src="ViewBag.Icons[i]" /></td>
+            <td>ViewBag.Descs[i]<br />
+            <button onclick="alert('ViewBag.Texts[i]')">More Info</button>
+            </td>
+        </tr>
+    }
+</table>
+    -->
