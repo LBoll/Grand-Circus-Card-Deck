@@ -55,15 +55,14 @@ namespace WeatherForecast.Controllers
             */
         public ActionResult Weather()
         {
-            
             HttpWebRequest WR = WebRequest.CreateHttp("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1");
             WR.UserAgent = ".NET Framework Test Client";
 
             HttpWebResponse Response = (HttpWebResponse)WR.GetResponse();
             StreamReader Reader = new StreamReader(Response.GetResponseStream());
-            string DeckData = Reader.ReadToEnd();
+            string Deck = Reader.ReadToEnd();
 
-            JObject JsonDeck = JObject.Parse(DeckData);
+            JObject JsonDeck = JObject.Parse(Deck);
             ViewBag.DeckId = JsonDeck["deck_id"];
             
             HttpWebRequest WRR = WebRequest.CreateHttp("https://deckofcardsapi.com/api/deck/" + ViewBag.DeckId + "/draw/?count=5");
@@ -72,9 +71,9 @@ namespace WeatherForecast.Controllers
             HttpWebResponse NewResponse = (HttpWebResponse)WRR.GetResponse();
             StreamReader NewReader = new StreamReader(NewResponse.GetResponseStream());
 
-            string DrawData = NewReader.ReadToEnd();
+            string DrawDeck = NewReader.ReadToEnd();
 
-            JObject NewJsonDeck = JObject.Parse(DrawData);
+            JObject NewJsonDeck = JObject.Parse(DrawDeck);
 
             ViewBag.Draw = NewJsonDeck["cards"];
             
