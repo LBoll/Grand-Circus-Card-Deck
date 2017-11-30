@@ -78,6 +78,7 @@ namespace WeatherForecast.Controllers
             ViewBag.Draw = NewJsonDeck["cards"];
             
             return View();
+            // 234543ghre
         }
     }
 }
